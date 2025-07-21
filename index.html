@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP Conexión - VPN SSH/SSL/TLS by EL CRIS DEV</title>
+    <meta name="description" content="HTTP Conexión - VPN gratuita con múltiples protocolos SSH/SSL y TLS. Diseño futurista, conexiones rápidas y seguras. Desarrollado por EL CRIS DEV.">
+    <meta name="keywords" content="HTTP Conexión, VPN, SSH, SSL, TLS, CrisDEV, Android, Seguridad, Privacidad, Túnel, Proxy, Operadores">
+    <meta name="author" content="EL CRIS DEV">
+    
+    <!-- Open Graph para redes sociales -->
+    <meta property="og:title" content="HTTP Conexión - VPN Segura">
+    <meta property="og:description" content="La mejor aplicación VPN para Android con múltiples protocolos y máxima seguridad">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="logo-http-conexion.svg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/icons/cris.png">
+    <link rel="apple-touch-icon" href="assets/icons/ic_launcher.png">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            --accent-gradient: linear-gradient(45deg, #00d4ff, #7b2ff7);
+            --dark-bg: #0a0a0f;
+            --card-bg: rgba(20, 20, 30, 0.95);
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --text-accent: #00d4ff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--dark-bg);
+            overflow-x: hidden;
+        }
+
+        /* Fondo animado */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(45deg, #0a0a0f, #1a1a2e, #16213e, #0f3460);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Partículas flotantes */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--text-accent);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-accent);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            from { filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.3)); }
+            to { filter: drop-shadow(0 0 40px rgba(123, 47, 247, 0.5)); }
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-accent);
+            border: 2px solid var(--text-accent);
+        }
+
+        .btn-secondary:hover {
+            background: var(--text-accent);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Sections */
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 4rem;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent-gradient);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: translateX(0);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Protocols Section */
+        .protocols-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .protocol-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--text-accent);
+            transition: all 0.3s ease;
+        }
+
+        .protocol-card:hover {
+            transform: translateX(10px);
+            border-left-width: 8px;
+        }
+
+        .protocol-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .protocol-type {
+            font-family: 'Courier New', monospace;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Download Section */
+        .download {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: var(--card-bg);
+            border-radius: 20px;
+            margin: 4rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .download-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .store-button {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 25px;
+            background: var(--card-bg);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .store-button:hover {
+            transform: translateY(-5px);
+            border-color: var(--text-accent);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .store-icon {
+            font-size: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--card-bg);
+            padding: 3rem 2rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-accent);
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section {
+                padding: 3rem 1rem;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Estilos específicos para la imagen del logo */
+.logo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 2px solid rgba(0, 212, 255, 0.5);
+    transition: all 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.1);
+    border-color: var(--text-accent);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid rgba(0, 212, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .logo-icon:hover {
+            transform: scale(1.1);
+            border-color: var(--text-accent);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+    <div class="particles" id="particles"></div>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="assets/icons/ic_launcher.png" alt="HTTP Conexión">
+                HTTP Conexión
+            </div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#caracteristicas">Características</a></li>
+                <li><a href="#protocolos">Protocolos</a></li>
+                <li><a href="#descargar">Descargar</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero">
+            <div class="hero-content">
+                <h1>HTTP Conexión</h1>
+                <h2>VPN con Protocolos SSH/SSL/TLS Avanzados</h2>
+                <p>Aplicación VPN de nueva generación con diseño futurista y tecnología de vanguardia. Múltiples protocolos, operadores VPN gratuitos y conexiones ultra-seguras. Desarrollado por <strong>EL CRIS DEV</strong> con interfaz interactiva y fácil de usar.</p>
+                <div class="cta-buttons">
+                    <a href="https://play.google.com/store/apps/details?id=com.doriaxvpn.unlimited" target="_blank" class="btn btn-primary">🚀 Descargar en Play Store</a>
+                    <a href="https://t.me/elcrischat" target="_blank" class="btn btn-secondary">💬 Únete al Grupo</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="caracteristicas" class="section fade-in">
+            <h2 class="section-title">¿Por qué HTTP Conexión?</h2>
+            <p class="section-subtitle">Diseño futurista con tecnología de vanguardia</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🏍️</div>
+                    <h3>Diseño Futurista</h3>
+                    <p>Interfaz única con temática cyberpunk, fondos animados y efectos visuales impresionantes. Una experiencia visual sin igual en el mundo VPN.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔐</div>
+                    <h3>Protocolos SSH/SSL/TLS</h3>
+                    <p>Túneles seguros con protocolos SSH, SSL y TLS para intercambio seguro de datos. Máxima protección y integridad de identidades.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📡</div>
+                    <h3>Operadores VPN FREE</h3>
+                    <p>Acceso gratuito a múltiples operadores VPN internacionales. Conexiones estables y de alta velocidad sin costo alguno.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Conexión Ultra-Rápida</h3>
+                    <p>Optimización avanzada para gaming, streaming y navegación. Latencia mínima y velocidades máximas garantizadas.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Interfaz Interactiva</h3>
+                    <p>Control total con un toque. Estadísticas en tiempo real, contador de tiempo conectado y estado visual de conexión.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Máxima Privacidad</h3>
+                    <p>Zero-logs policy y cifrado de nivel militar. Tu actividad y datos personales están completamente protegidos.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats fade-in">
+            <h2 class="section-title">HTTP Conexión en Números</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <div class="stat-label">Gratuito y Seguro</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">6</span>
+                    <div class="stat-label">Protocolos Avanzados</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">24/7</span>
+                    <div class="stat-label">Servidores Activos</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100+</span>
+                    <div class="stat-label">Operadores VPN FREE</div>
+            </div>
+        </section>
+
+        <section id="protocolos" class="section fade-in">
+            <h2 class="section-title">Protocolos SSH/SSL/TLS</h2>
+            <p class="section-subtitle">Tecnología de túneles seguros para diferentes necesidades</p>
+            
+            <div class="protocols-grid">
+                <div class="protocol-card">
+                    <div class="protocol-name">SSH Direct</div>
+                    <div class="protocol-type">Protocolo: SSH Directo</div>
+                    <p>Túnel SSH directo con cifrado robusto para conexiones estables y seguras a servidores confiables.</p>
+                </div>
+                
+                <div class="protocol-card">
+                    <div class="protocol-name">SSH Proxy</div>
+                    <div class="protocol-type">Protocolo: SSH + Proxy</div>
+                    <p>Combinación SSH con proxy HTTP/SOCKS para evadir firewalls corporativos y restricciones de red.</p>
+                </div>
+                
+                <div class="protocol-card">
+                    <div class="protocol-name">SSL Secure</div>
+                    <div class="protocol-type">Protocolo: SSL/TLS</div>
+                    <p>Capa SSL adicional sobre SSH para máxima seguridad en redes públicas y conexiones críticas.</p>
+                </div>
+                
+                <div class="protocol-card">
+                    <div class="protocol-name">TLS Advanced</div>
+                    <div class="protocol-type">Protocolo: TLS 1.3</div>
+                    <p>Protocolo TLS de última generación para intercambio seguro de datos con cifrado de punta.</p>
+                </div>
+                
+                <div class="protocol-card">
+                    <div class="protocol-name">UDP Fast</div>
+                    <div class="protocol-type">Protocolo: UDP Optimizado</div>
+                    <p>Conexiones UDP de alta velocidad ideales para gaming, streaming y aplicaciones de baja latencia.</p>
+                </div>
+                
+                <div class="protocol-card">
+                    <div class="protocol-name">V2Ray Pro</div>
+                    <div class="protocol-type">Protocolo: V2Ray</div>
+                    <p>Protocolo avanzado con ofuscación para máxima privacidad y anti-detección en redes restrictivas.</p>
+                </div>
+            </div>
+            
+            <div style="background: var(--card-bg); padding: 2rem; border-radius: 15px; margin-top: 3rem; border: 1px solid rgba(255,255,255,0.1);">
+                <h3 style="color: var(--text-accent); margin-bottom: 1rem;">🔐 Garantías de Seguridad:</h3>
+                <p style="color: var(--text-secondary); line-height: 1.6;">
+                    <strong>1. Responsabilidad:</strong> Túnel SSH/SSL y TLS para intercambio seguro de datos entre máquinas a través de red confiable. SSH protege la privacidad y la integridad de las identidades, archivos transferidos.<br><br>
+                    <strong>2. Servicio y Garantías:</strong> Ofrecemos un túnel VPN para asegurar sus datos y proteger su identidad de punto a punto. No garantizamos el acceso total y permanente a los servidores.<br><br>
+                    <strong>3. Términos y Condiciones:</strong> Cada vez que compartas o conectes en más de un dispositivo, el sistema te bloqueará y tendrás que pedir reconexión.
+                </p>
+            </div>
+        </section>
+
+        <section id="descargar" class="download fade-in">
+            <h2 class="section-title">Descarga HTTP Conexión</h2>
+            <p class="section-subtitle">Disponible GRATIS en Google Play Store</p>
+            <p>Únete a la revolución VPN con diseño futurista. Experimenta la interfaz más innovadora y las conexiones más seguras del mercado.</p>
+            
+            <div class="download-buttons">
+                <a href="https://play.google.com/store/apps/details?id=com.doriaxvpn.unlimited" target="_blank" class="store-button">
+                    <div class="store-icon">📱</div>
+                    <div>
+                        <div style="font-size: 0.8rem; color: #b0b0b0;">Descargar en</div>
+                        <div style="font-size: 1.2rem; font-weight: bold;">Google Play Store</div>
+                    </div>
+                </a>
+                
+                <a href="https://t.me/elcrischat" target="_blank" class="store-button">
+                    <div class="store-icon">💬</div>
+                    <div>
+                        <div style="font-size: 0.8rem; color: #b0b0b0;">Únete al</div>
+                        <div style="font-size: 1.2rem; font-weight: bold;">Grupo Telegram</div>
+                    </div>
+                </a>
+            </div>
+            
+            <div style="margin-top: 3rem; background: rgba(0,212,255,0.1); padding: 2rem; border-radius: 15px; border: 1px solid rgba(0,212,255,0.3);">
+                <h3 style="color: var(--text-accent); margin-bottom: 1rem;">🌐 Comunidad Telegram</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                    Únete a nuestra comunidad activa donde compartimos actualizaciones, servidores exclusivos y soporte técnico.
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="https://t.me/cris1823" target="_blank" style="color: var(--text-accent); text-decoration: none; font-weight: bold;">
+                        📢 Canal: @cris1823
+                    </a>
+                    <a href="https://t.me/elcrischat" target="_blank" style="color: var(--text-accent); text-decoration: none; font-weight: bold;">
+                        💬 Grupo: @elcrischat
+                    </a>
+                </div>
+            </div>
+            
+            <p style="margin-top: 2rem; color: #b0b0b0; font-size: 0.9rem;">
+                ✅ Compatible con Android 5.0+ | 🚀 Diseño Futurista | 🔒 100% Seguro y Gratuito
+            </p>
+        </section>
+    </main>
+
+    <footer id="contacto">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="https://soportecrisdev.github.io/Politica/" target="_blank">Política de Privacidad</a>
+                <a href="https://soportecrisdev.github.io/Politica/" target="_blank">Términos de Uso</a>
+                <a href="https://t.me/elcrischat" target="_blank">Soporte Técnico</a>
+                <a href="https://t.me/cris1823" target="_blank">Canal Telegram</a>
+                <a href="https://t.me/elcrischat" target="_blank">Grupo de Usuario</a>
+            </div>
+            
+            <div class="copyright">
+                <p><strong>HTTP Conexión</strong> - Desarrollado con ❤️ por <strong>EL CRIS DEV</strong></p>
+                <p>© 2025 EL CRIS DEV. Todos los derechos reservados.</p>
+                <p>🌐 Telegram: <a href="https://t.me/cris1823" target="_blank" style="color: #00d4ff;">@cris1823</a> | 💬 Grupo: <a href="https://t.me/elcrischat" target="_blank" style="color: #00d4ff;">@elcrischat</a></p>
+                <p style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.7;">
+                    🚀 Descarga: <a href="https://play.google.com/store/apps/details?id=com.doriaxvpn.unlimited" target="_blank" style="color: #00d4ff;">Play Store</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Crear partículas animadas
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Animación de scroll
+        function handleScrollAnimations() {
+            const elements = document.querySelectorAll('.fade-in');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        // Smooth scroll para enlaces
+        function setupSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Header scroll effect
+        function setupHeaderEffect() {
+            window.addEventListener('scroll', () => {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.style.background = 'rgba(10, 10, 15, 0.98)';
+                } else {
+                    header.style.background = 'rgba(10, 10, 15, 0.95)';
+                }
+            });
+        }
+
+        // Animación de números en stats
+        function animateStats() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            
+            statNumbers.forEach(stat => {
+                const target = stat.textContent;
+                const isNumber = !isNaN(target.replace(/[^\d]/g, ''));
+                
+                if (isNumber) {
+                    const finalNumber = parseInt(target.replace(/[^\d]/g, ''));
+                    const suffix = target.replace(/[\d]/g, '');
+                    let current = 0;
+                    const increment = finalNumber / 50;
+                    
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= finalNumber) {
+                            stat.textContent = finalNumber + suffix;
+                            clearInterval(timer);
+                        } else {
+                            stat.textContent = Math.floor(current) + suffix;
+                        }
+                    }, 30);
+                }
+            });
+        }
+
+        // Inicializar todo
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            setupSmoothScroll();
+            setupHeaderEffect();
+            handleScrollAnimations();
+            
+            // Ejecutar animaciones en scroll
+            window.addEventListener('scroll', handleScrollAnimations);
+            
+            // Animar stats cuando sean visibles
+            let statsAnimated = false;
+            window.addEventListener('scroll', () => {
+                if (!statsAnimated) {
+                    const statsSection = document.querySelector('.stats');
+                    const rect = statsSection.getBoundingClientRect();
+                    if (rect.top < window.innerHeight) {
+                        animateStats();
+                        statsAnimated = true;
+                    }
+                }
+            });
+        });
+
+        // Efecto de hover en las tarjetas
+        document.addEventListener('mouseover', function(e) {
+            if (e.target.closest('.feature-card') || e.target.closest('.protocol-card')) {
+                e.target.closest('.feature-card, .protocol-card').style.transform = 'translateY(-10px) scale(1.02)';
+            }
+        });
+
+        document.addEventListener('mouseout', function(e) {
+            if (e.target.closest('.feature-card') || e.target.closest('.protocol-card')) {
+                e.target.closest('.feature-card, .protocol-card').style.transform = '';
+            }
+        });
+    </script>
+</body>
+</html>
