@@ -1,7 +1,7 @@
 # 🚀 HTTP Conexión - Landing Page
 
 <p align="center">
-  <img src="ic_launcher.png" alt="HTTP Conexión" width="120" height="120">
+  <img src="image/ic_launcher.png" alt="HTTP Conexión" width="120" height="120">
 </p>
 
 <p align="center">
