@@ -1,7 +1,7 @@
 # 🚀 HTTP Conexión - Landing Page
 
 <p align="center">
-  <img src="image/ic_launcher.png" alt="HTTP Conexión" width="120" height="120">
+  <img src="ic_launcher.png" alt="HTTP Conexión" width="120" height="120">
 </p>
 
 <p align="center">
@@ -34,7 +34,7 @@
 
 ## 🌐 Demo en Vivo
 
-🔗 **[Ver Página Web](https://conexion.crisdev.fun)**  
+🔗 **[Ver Página Web](https://tu-dominio.com)**  
 📱 **[Descargar App](https://play.google.com/store/apps/details?id=com.doriaxvpn.unlimited)**
 
 ---

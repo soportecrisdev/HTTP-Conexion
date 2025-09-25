@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP Conexión - México</title>
+    <meta name="description" content="HTTP Conexión VPN para México - Servidores optimizados y configuraciones específicas">
+    <link rel="icon" type="image/png" href="../assets/icons/cris.png">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .country-header {
+            background: var(--card-bg);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-radius: 20px;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .country-flag-large {
+            font-size: 6rem;
+            margin-bottom: 1rem;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #00d4ff;
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateX(10px);
+            border-left-width: 8px;
+        }
+
+        .info-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #00d4ff;
+            margin-bottom: 1rem;
+        }
+
+        .server-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .server-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+        }
+
+        .server-list li:last-child {
+            border-bottom: none;
+        }
+
+        .config-code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #00d4ff;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        .operator-card {
+            border-left-color: #ff6b6b;
+        }
+
+        .operator-card .info-title {
+            color: #ff6b6b;
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+    <div class="particles" id="particles"></div>
+
+    <button class="back-button" onclick="goBack()">← Volver</button>
+
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 2rem;">
+        <div class="country-header">
+            <div class="country-flag-large">
+                <img src="../image/flag/mx.png" alt="Bandera de México" style="width: 120px; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+            </div>
+            <h1>HTTP Conexión - México</h1>
+            <p>Servidores optimizados y configuraciones específicas para México</p>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <h3 class="info-title">🌐 Servidores México</h3>
+                <p>Servidores locales con mejor latencia:</p>
+                <ul class="server-list">
+                    <li>🇲🇽 Ciudad de México - mx1.httpconexion.com</li>
+                    <li>🇲🇽 Guadalajara - mx2.httpconexion.com</li>
+                    <li>🇲🇽 Monterrey - mx3.httpconexion.com</li>
+                    <li>🇺🇸 Dallas (Cercano) - us-dallas.httpconexion.com</li>
+                </ul>
+            </div>
+
+            <div class="info-card operator-card">
+                <h3 class="info-title">
+                    <img src="../image/operadores/telcel.png" alt="Telcel" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; border-radius: 4px;">
+                    Telcel
+                </h3>
+                <p>Configuración optimizada para Telcel:</p>
+                <div class="config-code">
+Host: telcel.httpconexion.com
+Puerto: 80, 8080, 443
+Payload: GET wss://telcel.com/ HTTP/1.1[crlf]
+Host: [host][crlf]
+Upgrade: websocket[crlf][crlf]
+                </div>
+            </div>
+
+            <div class="info-card operator-card">
+                <h3 class="info-title">
+                    <img src="../image/operadores/movistar.png" alt="Movistar" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; border-radius: 4px;">
+                    Movistar
+                </h3>
+                <p>Configuración para Movistar México:</p>
+                <div class="config-code">
+Host: movistar.httpconexion.com
+Puerto: 443, 80
+Payload: GET / HTTP/1.1[crlf]
+Host: movistar.com.mx[crlf]
+Connection: Upgrade[crlf][crlf]
+                </div>
+            </div>
+
+            <div class="info-card operator-card">
+                <h3 class="info-title">📱 AT&T México</h3>
+                <p>Configuración para AT&T:</p>
+                <div class="config-code">
+Host: att.httpconexion.com
+Puerto: 8080, 80
+Payload: GET wss://att.com.mx/ HTTP/1.1[crlf]
+Host: [host][crlf]
+Upgrade: websocket[crlf][crlf]
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3 class="info-title">🔧 SSH México</h3>
+                <p>Configuración SSH optimizada:</p>
+                <div class="config-code">
+Host: mx.httpconexion.com
+Puerto: 22, 80, 443
+Usuario: mexico_user
+Password: [Disponible en la app]
+Compresión: Sí
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3 class="info-title">📊 Estadísticas México</h3>
+                <ul class="server-list">
+                    <li>Velocidad promedio: 60+ Mbps</li>
+                    <li>Latencia promedio: 25ms</li>
+                    <li>Uptime: 99.95%</li>
+                    <li>Usuarios México: 2,500+</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="info-card" style="margin-top: 2rem;">
+            <h3 class="info-title">🇲🇽 Información Específica para México</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                <div>
+                    <h4 style="color: #00d4ff; margin-bottom: 0.5rem;">Mejores Horarios</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                        • Madrugada: 2:00 AM - 6:00 AM<br>
+                        • Mediodía: 12:00 PM - 2:00 PM<br>
+                        • Noche: 10:00 PM - 12:00 AM
+                    </p>
+                </div>
+                <div>
+                    <h4 style="color: #00d4ff; margin-bottom: 0.5rem;">Operadores Compatibles</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                        ✅ Telcel<br>
+                        ✅ Movistar<br>
+                        ✅ AT&T<br>
+                        ⚠️ Unefon (Limitado)
+                    </p>
+                </div>
+                <div>
+                    <h4 style="color: #00d4ff; margin-bottom: 0.5rem;">Soporte Local</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                        📧 soporte-mx@httpconexion.com<br>
+                        📱 WhatsApp: +52 55 1234 5678<br>
+                        🕐 Horario: 9:00 AM - 9:00 PM (GMT-6)
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-card" style="margin-top: 2rem; text-align: center; border-left-color: #4ecdc4;">
+            <h3 class="info-title" style="color: #4ecdc4;">💡 Consejos para México</h3>
+            <p>• Usa servidores mexicanos para mejor velocidad local</p>
+            <p>• Cambia a servidores de Dallas si hay congestión</p>
+            <p>• Telcel funciona mejor en horarios nocturnos</p>
+            <p>• Reinicia la conexión si la velocidad baja</p>
+        </div>
+    </div>
+
+    <script src="../script.js"></script>
+    <script>
+        function goBack() {
+            const body = document.body;
+            body.style.opacity = '0.8';
+            body.style.transition = 'opacity 0.3s ease';
+            
+            setTimeout(() => {
+                window.location.href = '../index.html#countries';
+            }, 300);
+        }
+
+        // Inicializar efectos
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+        });
+    </script>
+</body>
+</html>

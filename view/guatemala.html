@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP Conexión - Guatemala</title>
+    <meta name="description" content="HTTP Conexión VPN para Guatemala - Servidores optimizados y configuraciones específicas">
+    <link rel="icon" type="image/png" href="../assets/icons/cris.png">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .country-header {
+            background: var(--card-bg);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-radius: 20px;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .country-flag-large {
+            font-size: 6rem;
+            margin-bottom: 1rem;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (max-width: 1024px) {
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                margin: 2rem 1rem;
+            }
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #0073ce;
+            transition: all 0.3s ease;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-card:hover {
+            transform: translateX(10px);
+            border-left-width: 8px;
+        }
+
+        .info-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #0073ce;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .server-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .server-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .server-list li:last-child {
+            border-bottom: none;
+        }
+
+        .config-code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        .operator-logo {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .tips-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tips-list li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .tips-list li:before {
+            content: "💡";
+            position: absolute;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <button class="back-button" onclick="window.location.href='../index.html'">
+        ← Volver
+    </button>
+
+    <div class="container">
+        <div class="country-header">
+            <div class="country-flag-large">🇬🇹</div>
+            <h1>HTTP Conexión - Guatemala</h1>
+            <p>Servidores optimizados y configuraciones específicas para Guatemala</p>
+        </div>
+
+        <!-- Primera fila: Información general -->
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-title">🌐 Servidores Globales</div>
+                <p>Servidores disponibles en múltiples ubicaciones:</p>
+                <ul class="server-list">
+                    <li>🇺🇸 Estados Unidos - us.httpconexion.com</li>
+                    <li>🇪🇺 Europa - eu.httpconexion.com</li>
+                    <li>🇦🇵 Asia-Pacífico - ap.httpconexion.com</li>
+                    <li>🇧🇷 Brasil - br.httpconexion.com</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <div class="info-title">⚙️ Configuración SSH</div>
+                <p>Configuración básica para conexión SSH:</p>
+                <div class="config-code">
+Host: global.httpconexion.com<br>
+Puerto: 22, 80, 443, 8080<br>
+Usuario: httpconexion<br>
+Password: [Disponible en la app]
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-title">🔒 Configuración SSL/TLS</div>
+                <p>Configuración para conexiones seguras:</p>
+                <div class="config-code">
+Host: ssl.httpconexion.com<br>
+Puerto SSL: 443, 993<br>
+Puerto TLS: 587, 465<br>
+SNI: global.httpconexion.com
+                </div>
+            </div>
+        </div>
+
+        <!-- Segunda fila: Operadores guatemaltecos -->
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-title">
+                    <img src="../image/operadores/tigo.png" alt="Tigo" class="operator-logo" onerror="this.style.display='none'">
+                    📱 Tigo Guatemala
+                </div>
+                <p>Servidor para todo Guatemala</p>
+                <ul class="server-list">
+                    <li>Funciona sin ningún gasto previo</li>
+                    <li>Para usar en redes sociales</li>
+                    <li>No sube más de 2 MBS de velocidad</li>
+                    <li>Funciona sin paquetes o sin saldo</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <div class="info-title">
+                    <img src="../image/operadores/claro.png" alt="Claro" class="operator-logo" onerror="this.style.display='none'">
+                    📱 Claro Guatemala
+                </div>
+                <p>Servidor para todo Guatemala</p>
+                <ul class="server-list">
+                    <li>Servidor V2Ray más optimizado</li>
+                    <li>Funciona sin ningún gasto previo</li>
+                    <li>Para usar en redes sociales</li>
+                    <li>No sube más de 2 MBS de velocidad</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <div class="info-title">
+                    <img src="../image/operadores/movistar.png" alt="Movistar" class="operator-logo" onerror="this.style.display='none'">
+                    📱 Movistar Guatemala
+                </div>
+                <p>Servidor para todo Guatemala</p>
+                <ul class="server-list">
+                    <li>Servidor V2Ray más optimizado</li>
+                    <li>Funciona sin ningún gasto previo</li>
+                    <li>Para usar en redes sociales</li>
+                    <li>Funciona sin paquetes o sin saldo</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Tercera fila: Configuraciones adicionales -->
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-title">🔧 Configuración Avanzada</div>
+                <p>Configuraciones técnicas adicionales:</p>
+                <div class="config-code">
+DNS Primario: 8.8.8.8<br>
+DNS Secundario: 1.1.1.1<br>
+MTU: 1500<br>
+Protocolo: TCP/UDP
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-title">📋 Consejos para Guatemala</div>
+                <ul class="tips-list">
+                    <li>Mejor rendimiento en horarios nocturnos</li>
+                    <li>Usar DNS públicos para mejor conectividad</li>
+                    <li>Configurar modo avión y reconectar si hay problemas</li>
+                    <li>Mantener la app actualizada</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <div class="info-title">📞 Soporte Técnico</div>
+                <p>¿Necesitas ayuda?</p>
+                <ul class="server-list">
+                    <li>📧 Email: soporte@httpconexion.com</li>
+                    <li>💬 Telegram: @httpconexion_gt</li>
+                    <li>🕐 Horario: 24/7</li>
+                    <li>🌐 Web: httpconexion.com/gt</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animación de entrada para las tarjetas
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.info-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+
+        // Efecto hover mejorado
+        document.querySelectorAll('.info-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(10px) translateY(-5px)';
+                this.style.boxShadow = '0 10px 30px rgba(0, 115, 206, 0.2)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0) translateY(0)';
+                this.style.boxShadow = 'none';
+            });
+        });
+    </script>
+</body>
+</html>

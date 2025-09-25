@@ -387,6 +387,81 @@
             margin-top: 0.5rem;
         }
 
+        /* Country Selection Styles */
+        .countries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .country-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .country-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--accent-gradient);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .country-card:hover::before {
+            transform: translateX(0);
+        }
+
+        .country-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.3);
+            border-color: rgba(0, 212, 255, 0.5);
+        }
+
+        .country-flag {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .country-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .country-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .country-arrow {
+            font-size: 1.5rem;
+            color: var(--text-accent);
+            font-weight: bold;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .country-card:hover .country-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
         /* Download Section */
         .download {
             text-align: center;
@@ -579,6 +654,78 @@
                 <div class="cta-buttons">
                     <a href="https://play.google.com/store/apps/details?id=com.doriaxvpn.unlimited" target="_blank" class="btn btn-primary">🚀 Descargar en Play Store</a>
                     <a href="https://t.me/elcrischat" target="_blank" class="btn btn-secondary">💬 Únete al Grupo</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="countries" class="section fade-in">
+            <h2 class="section-title">Información por País</h2>
+            <p class="section-subtitle">Selecciona tu país para obtener información específica sobre servidores y configuraciones</p>
+            
+            <div class="countries-grid">
+                <!--Cuadro universal-->
+                <div class="country-card" data-country="universal" onclick="navigateToCountry('universal')">
+                    <div class="country-flag">
+                        <img src="image/flag/universal.png" alt="Universal" style="width: 60px; height: auto; border-radius: 5px;">
+                    </div>
+                    <h3>Universal</h3>
+                    <p>Información general para todos los países</p>
+                    <div class="country-arrow">→</div>
+                </div>
+                 <!--cuadro colombia-->
+                <div class="country-card" data-country="colombia" onclick="navigateToCountry('colombia')">
+                    <div class="country-flag">
+                        <img src="image/flag/co.png" alt="Colombia" style="width: 60px; height: auto; border-radius: 5px;">
+                    </div>
+                    <h3>Colombia</h3>
+                    <p>Configuraciones específicas para Colombia</p>
+                    <div class="country-arrow">→</div>
+                </div>
+                 <!--cuadro Guatemala-->
+                <div class="country-card" data-country="Guatemala" onclick="navigateToCountry('Guatemala')">
+                    <div class="country-flag">
+                        <img src="image/flag/gt.png" alt="Guatemala" style="width: 60px; height: auto; border-radius: 5px;">
+                    </div>
+                    <h3>Guatemala</h3>
+                    <p>Configuraciones específicas para Guatemala</p>
+                    <div class="country-arrow">→</div>
+                </div>
+                <!--cuadro mexico-->
+                <div class="country-card" data-country="mexico" onclick="navigateToCountry('mexico')">
+                    <div class="country-flag">
+                        <img src="image/flag/mx.png" alt="México" style="width: 60px; height: auto; border-radius: 5px;">
+                    </div>
+                    <h3>México</h3>
+                    <p>Servidores optimizados para México</p>
+                    <div class="country-arrow">→</div>
+                </div>
+               
+                <!--cuadro de Argentina-->
+                <div class="country-card" data-country="argentina" onclick="navigateToCountry('argentina')">
+                    <div class="country-flag">
+                        <img src="image/flag/ar.png" alt="Argentina" style="width: 60px; height: auto; border-radius: 5px;">
+                    </div>
+                    <h3>Argentina</h3>
+                    <p>Servidores locales en Argentina</p>
+                    <div class="country-arrow">→</div>
+                </div>
+                <!--cuadro de Peru-->
+                <div class="country-card" data-country="peru" onclick="navigateToCountry('peru')">
+                    <div class="country-flag">
+                        <img src="image/flag/pe.png" alt="Perú" style="width: 60px; height: auto; border-radius: 5px;">
+                    </div>
+                    <h3>Perú</h3>
+                    <p>Conexiones optimizadas para Perú</p>
+                    <div class="country-arrow">→</div>
+                </div>
+                <!--cuadro de Chile-->
+                <div class="country-card" data-country="chile" onclick="navigateToCountry('chile')">
+                    <div class="country-flag">
+                        <img src="image/flag/cl.png" alt="Chile" style="width: 60px; height: auto; border-radius: 5px;">
+                    </div>
+                    <h3>Chile</h3>
+                    <p>Servidores dedicados en Chile</p>
+                    <div class="country-arrow">→</div>
                 </div>
             </div>
         </section>
@@ -848,6 +995,19 @@
                     }, 30);
                 }
             });
+        }
+
+        // Función para navegar a páginas específicas de países
+        function navigateToCountry(country) {
+            // Crear efecto de transición suave
+            const body = document.body;
+            body.style.opacity = '0.8';
+            body.style.transition = 'opacity 0.3s ease';
+            
+            // Redirigir después de la animación
+            setTimeout(() => {
+                window.location.href = `view/${country}.html`;
+            }, 300);
         }
 
         // Inicializar todo

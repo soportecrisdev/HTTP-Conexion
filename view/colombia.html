@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP Conexión - Colombia</title>
+    <meta name="description" content="HTTP Conexión VPN para Colombia - Servidores optimizados y configuraciones específicas">
+    <link rel="icon" type="image/png" href="../assets/icons/cris.png">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .country-header {
+            background: var(--card-bg);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-radius: 20px;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .country-flag-large {
+            font-size: 6rem;
+            margin-bottom: 1rem;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (max-width: 1024px) {
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                margin: 2rem 1rem;
+            }
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #fcdc00;
+            transition: all 0.3s ease;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-card:hover {
+            transform: translateX(10px);
+            border-left-width: 8px;
+        }
+
+        .info-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #fcdc00;
+            margin-bottom: 1rem;
+        }
+
+        .server-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .server-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+        }
+
+        .server-list li:last-child {
+            border-bottom: none;
+        }
+
+        .config-code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #fcdc00;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        .operator-card {
+            border-left-color: #ce1126;
+        }
+
+        .operator-card .info-title {
+            color: #ce1126;
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+    <div class="particles" id="particles"></div>
+
+    <button class="back-button" onclick="goBack()">← Volver</button>
+
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 2rem;">
+        <div class="country-header">
+            <div class="country-flag-large">
+                <img src="../image/flag/co.png" alt="Bandera de Colombia" style="width: 120px; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+            </div>
+            <h1>HTTP Conexión - Colombia</h1>
+            <p>Servidores optimizados y configuraciones específicas para Colombia</p>
+        </div>
+
+        <!-- Información de servidores -->
+        <div class="info-grid">
+            <!-- Servidores Globales -->
+            <div class="info-card">
+                <h3 class="info-title">🌐 Servidores Globales</h3>
+                <p>Servidores disponibles en múltiples ubicaciones:</p>
+                <ul class="server-list">
+                    <li>🇺🇸 Estados Unidos - us.httpconexion.com</li>
+                    <li>🇪🇺 Europa - eu.httpconexion.com</li>
+                    <li>🌏 Asia-Pacífico - ap.httpconexion.com</li>
+                    <li>🇧🇷 Brasil - br.httpconexion.com</li>
+                </ul>
+            </div>
+
+            <!-- Configuración SSH -->
+            <div class="info-card">
+                <h3 class="info-title">⚙️ Configuración SSH</h3>
+                <p>Configuración básica para conexión SSH:</p>
+                <div class="config-code">
+Host: global.httpconexion.com
+Puerto: 22, 80, 443, 8080
+Usuario: httpconexion
+Password: [Disponible en la app]
+                </div>
+            </div>
+
+            <!-- Configuración SSL/TLS -->
+            <div class="info-card">
+                <h3 class="info-title">🔒 Configuración SSL/TLS</h3>
+                <p>Configuración para conexiones seguras:</p>
+                <div class="config-code">
+Host: ssl.httpconexion.com
+Puerto SSL: 443, 993 Puerto TLS: 587, 465 SNI: global.httpconexion.com
+                </div>
+            </div>
+        </div>
+
+        <!-- Operadores de Colombia -->
+        <div class="info-grid">
+            <!-- Tigo Normal -->
+            <div class="info-card operator-card">
+                <h3 class="info-title">
+                    <img src="../image/operadores/tigo.png" alt="Tigo" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; border-radius: 4px;">
+                    Tigo Normal
+                </h3>
+                <p>Servidor para todo colombia</p>
+                <ul class="server-list">
+                    <li>Funciona sin ningun ajuste previo</li>
+                    <li>Para usarlo en redes sociales</li>
+                    <li>No sube mas de 2 MBS de Velocidad</li>
+                    <li>Funciona sin paquetes o sin saldo</li>
+                </ul>
+            </div>
+
+            <!-- Tigo Normal 2 -->
+            <div class="info-card operator-card">
+                <h3 class="info-title">
+                    <img src="../image/operadores/tigo.png" alt="Tigo" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; border-radius: 4px;">
+                    Tigo Normal 2
+                </h3>
+                <p>Servidor para todo colombia</p>
+                <ul class="server-list">
+                    <li>Servidor V2Ray mas Optimizado</li>
+                    <li>Funciona sin ningun ajuste previo</li>
+                    <li>Para usarlo en redes sociales</li>
+                    <li>No sube mas de 2 MBS de Velocidad</li>
+                    <li>Funciona sin paquetes o sin saldo</li>
+                </ul>
+            </div>
+
+            <!-- Claro -->
+            <div class="info-card operator-card">
+                <h3 class="info-title">
+                    <img src="../image/operadores/claro.png" alt="Claro" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; border-radius: 4px;">
+                    Claro Colombia
+                </h3>
+                <p>Servidor optimizado para Claro</p>
+                <ul class="server-list">
+                    <li>Mejor rendimiento en Claro</li>
+                    <li>Puertos optimizados 80 y 8080</li>
+                    <li>Funciona con paquetes de datos</li>
+                    <li>Velocidad hasta 5 MBS</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Segunda fila de operadores -->
+        <div class="info-grid">
+            <!-- Movistar -->
+            <div class="info-card operator-card">
+                <h3 class="info-title">
+                    <img src="../image/operadores/movistar.png" alt="Movistar" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; border-radius: 4px;">
+                    Movistar Colombia
+                </h3>
+                <p>Servidor para Movistar Colombia</p>
+                <ul class="server-list">
+                    <li>Optimizado para red Movistar</li>
+                    <li>Funciona con planes prepago</li>
+                    <li>Velocidad estable</li>
+                    <li>Compatible con redes sociales</li>
+                </ul>
+            </div>
+
+            <!-- Configuración Avanzada -->
+            <div class="info-card">
+                <h3 class="info-title">⚡ Configuración Avanzada</h3>
+                <p>Configuraciones especiales para Colombia:</p>
+                <ul class="server-list">
+                    <li>Proxy HTTP: 8080, 3128</li>
+                    <li>Proxy HTTPS: 8443, 443</li>
+                    <li>WebSocket: 80, 8080</li>
+                    <li>V2Ray: 443, 10443</li>
+                </ul>
+            </div>
+
+            <!-- Consejos -->
+            <div class="info-card" style="border-left-color: #003893;">
+                <h3 class="info-title" style="color: #003893;">💡 Consejos para Colombia</h3>
+                <ul class="server-list">
+                    <li>Usa servidores de Bogotá para mejor estabilidad</li>
+                    <li>Claro funciona mejor con puertos 80 y 8080</li>
+                    <li>Cambia a Miami si hay problemas locales</li>
+                    <li>Evita horas pico (7-9 AM y 6-8 PM)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="../script.js"></script>
+    <script>
+        function goBack() {
+            const body = document.body;
+            body.style.opacity = '0.8';
+            body.style.transition = 'opacity 0.3s ease';
+            
+            setTimeout(() => {
+                window.location.href = '../index.html#countries';
+            }, 300);
+        }
+
+        // Inicializar efectos
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+        });
+    </script>
+</body>
+</html>

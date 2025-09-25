@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP Conexión - Información Universal</title>
+    <meta name="description" content="Información universal para HTTP Conexión VPN - Configuraciones y servidores globales">
+    <link rel="icon" type="image/png" href="../assets/icons/cris.png">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .country-header {
+            background: var(--card-bg);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-radius: 20px;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .country-flag-large {
+            font-size: 6rem;
+            margin-bottom: 1rem;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--text-accent);
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateX(10px);
+            border-left-width: 8px;
+        }
+
+        .info-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-accent);
+            margin-bottom: 1rem;
+        }
+
+        .server-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .server-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+        }
+
+        .server-list li:last-child {
+            border-bottom: none;
+        }
+
+        .config-code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: var(--text-accent);
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+    <div class="particles" id="particles"></div>
+
+    <button class="back-button" onclick="goBack()">← Volver</button>
+
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 2rem;">
+        <div class="country-header">
+            <div class="country-flag-large">
+                <img src="../image/flag/universal.png" alt="Bandera Universal" style="width: 120px; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+            </div>
+            <h1>Servidores Multipais</h1>
+            <p>Configuraciones y servidores globales para HTTP Conexión</p>
+        </div>
+        <!-- servodor 1 -->
+        <div class="info-grid">
+            <div class="info-card">
+                 <h3 class="info-title">
+                    <img src="../image/operadores/udp.png" alt="Tigo" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; border-radius: 4px;">
+                    UDP HYSTERIA
+                </h3>
+                <p>Servidores disponibles en múltiples ubicaciones:</p>
+                <ul class="server-list">
+                    <li>Conecta muy bien en los suientes paises: Colombia, Venezuela, Usa, etc</li>
+                    <li>Es necssario poner modo avión si no quiere conectar</li>
+                    <li>Aveces se cae la conexión</li>
+                    <li>Muy bien para redes sociales y navegación</li>
+                </ul>
+            </div>
+            <!-- servidor 2 -->
+            <div class="info-card">
+                <h3 class="info-title">
+                    <img src="../image/operadores/udp.png" alt="Tigo" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; border-radius: 4px;">
+                    UDP HYSTERIA 2
+                </h3>
+                <p>Múltipais:</p>
+                <div class="server-list">
+                    <li>Si no te conecta UDP HYSTERIA 1 prueba con este servidor</li>
+                    <li>li>Conecta muy bien en los suientes paises: Colombia, Venezuela, Usa, etc</li>
+                    <li>Es necssario poner modo avión si no quiere conectar</li>
+                    <li>Aveces se cae la conexión</li>
+                    <li>Muy bien para redes sociales y navegación</li>
+                </div>
+            </div>
+            <!-- servidor 3 -->
+            <div class="info-card">
+                <h3 class="info-title">
+                    <img src="../image/operadores/dns.png" alt="Tigo" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; border-radius: 4px;">
+                    SLOW-DNS MULTIPAIS °1
+                </h3>
+                <p>Metodo para diferentes paises:</p>
+                <div class="server-list">
+                    <li>Conecta en varios países como: Ecuador, Venezuela, Costa Rica, Colombia, etc</li>
+                    <li>Aveces requiere modo avión</li>
+                    <li>Velocidad de 1 Mgbs en adelante</li>
+                    <li>Optimo pararedes sociales</li>
+
+                </div>
+            </div>
+
+            <div class="info-card">
+                 <h3 class="info-title">
+                    <img src="../image/operadores/dns.png" alt="Tigo" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; border-radius: 4px;">
+                    dns
+                </h3>
+                <p>Servidor para diferentes países:</p>
+                <div class="server-list">
+                    <li>Servidor opcional si no funciona SLOW-DNS MULTIPAIS °1</li>
+                    <li>Conecta en varios países como: Ecuador, Venezuela, Costa Rica, Colombia, etc</li>
+                    <li>Aveces requiere modo avión</li>
+                    <li>Velocidad de 1 Mgbs en adelante</li>
+                    <li>Optimo pararedes sociales</li>
+                </div>
+            </div>
+
+            
+
+           
+        </div>
+
+        <div class="info-card" style="margin-top: 2rem; text-align: center;">
+            <h3 class="info-title">💡 Consejos Universales</h3>
+            <p>• Usa siempre la configuración más reciente disponible en la aplicación</p>
+            <p>• Cambia de servidor si experimentas lentitud</p>
+            <p>• Mantén la aplicación actualizada para mejores resultados</p>
+            <p>• Contacta soporte si tienes problemas de conexión</p>
+        </div>
+    </div>
+
+    <script src="../script.js"></script>
+    <script>
+        function goBack() {
+            const body = document.body;
+            body.style.opacity = '0.8';
+            body.style.transition = 'opacity 0.3s ease';
+            
+            setTimeout(() => {
+                window.location.href = '../index.html#countries';
+            }, 300);
+        }
+
+        // Inicializar efectos
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+        });
+    </script>
+</body>
+</html>
